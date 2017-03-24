@@ -1,11 +1,34 @@
 //console.log("Up and running!");
 
-alert('Hello, friends.');
+alert('Get Ready!');
 
-// var cardOne = "queen"; var cardTwo = "king"; var cardThree = "queen"; var cardFour = "king";
+//var cardOne = "queen"; var cardTwo = "king"; var cardThree = "queen"; var cardFour = "king";
+//var cards = ["queen", "queen", "king", "king"];
 
-var cards = ["queen", "queen", "king", "king"];
+var cards = [
+	{
+		rank: "queen",
+		suit: "hearts",
+		cardImage: "images/queen-of-hearts.png"
+	},
+	{
+		rank: "queen",
+		suit: "diamonds",
+		cardImage: "images/queen-of-hearts.png"
+	},
+	{
+		rank: "king",
+		suit: "hearts",
+		cardImage: "images/king-of-hearts.png"
+	},
+	{
+		rank: "king",
+		suit: "diamonds",
+		cardImage: "images/king-of-diamonds.png"	
+	}
+];
 var cardsInPlay =[];
+var cardId = [0, 1, 2, 3]
 
 //var cardOne = cards[0];
 //cardsInPlay.push(cardOne);
@@ -29,22 +52,54 @@ var checkForMatch = function () {
   } else {
       console.log("Sorry, try again.");
   }
+};
+
+
+
+// var flipCard = function () {
+// 	//console.log("User flipped " + cards[cardId].rank);
+// 	if (cardsInPlay.length === 2) {
+// 	if (cardsInPlay[0] === cardsInPlay[1]) {
+// 		console.log("User flipped " + cards[cardId].rank);
+// 		cardsInPlay.push(cards[cardId].rank);
+// 		console.log(cards[cardId].suit);
+// 		console.log(cards[cardId].cardImage);
+// 		alert(checkForMatch);
+// 		this.getAttribute('data-id');
+// 	} else {
+// 		alert(checkForMatch);
+// 	}
+//   }
+// };
+
+
+var flipCard = function () {
+	this.getAttribute('data-id');
+	console.log("User flipped " + cards[cardId].rank)
+	cardsInPlay.push(cards[cardId].rank);
+	this.setAttribute('src', cards[cardId].cardImage)
+	if (cardsInPlay.length === 2) {
+		checkForMatch();
+	}
+	console.log(cards[cardId].cardImage);
+	console.log(cards[cardId].suit);
 }
 
 
+//flipCard(0);
+//flipCard(2);
 
-var flipCard = function (cardId) {
-if (cardsInPlay.length === 2) {
-	if (cardsInPlay[0] === cardsInPlay[1]) {
-		console.log("User flipped " + cards[cardId]);
-		cardsInPlay.push(cards[cardId]);
-		alert(checkForMatch);
-	} else {
-		alert(checkForMatch);
-	}
+var createBoard = function () {
+	for (var i = 0; i < cards.length; i++) {
+		var cardElement = document.createElement('img');
+  		cardElement.setAttribute('src', 'images/back.png');
+  		cardElement.setAttribute('data-id', i);
+  		cardElement.addEventListener('click', flipCard);
+  		document.getElementById('game-board').appendChild(cardElement);
   }
+
 };
 
-flipCard(0);
-flipCard(2);
-//cardsInPlay.push(cards[cardId]);
+
+
+createBoard();
