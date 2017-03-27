@@ -75,8 +75,8 @@ var checkForMatch = function () {
 
 var flipCard = function () {
 	cardId = this.getAttribute('data-id');
-	console.log(cardId);
-	//console.log("User flipped " + cards[cardId].rank)
+	//console.log(cardId);
+	console.log("User flipped " + cards[cardId].rank)
 	cardsInPlay.push(cards[cardId].rank);
 	this.setAttribute('src', cards[cardId].cardImage)
 	if (cardsInPlay.length === 2) {
