@@ -28,7 +28,7 @@ var cards = [
 	}
 ];
 var cardsInPlay =[];
-var cardId = [0, 1, 2, 3]
+//var cardId = []
 
 //var cardOne = cards[0];
 //cardsInPlay.push(cardOne);
@@ -57,7 +57,7 @@ var checkForMatch = function () {
 
 
 // var flipCard = function () {
-// 	//console.log("User flipped " + cards[cardId].rank);
+
 // 	if (cardsInPlay.length === 2) {
 // 	if (cardsInPlay[0] === cardsInPlay[1]) {
 // 		console.log("User flipped " + cards[cardId].rank);
@@ -74,16 +74,16 @@ var checkForMatch = function () {
 
 
 var flipCard = function () {
-	this.getAttribute('data-id');
-	console.log("User flipped " + cards[cardId].rank)
+	cardId = this.getAttribute('data-id');
+	console.log(cardId);
+	//console.log("User flipped " + cards[cardId].rank)
 	cardsInPlay.push(cards[cardId].rank);
 	this.setAttribute('src', cards[cardId].cardImage)
 	if (cardsInPlay.length === 2) {
 		checkForMatch();
+		cardsInPlay = [];
 	}
-	console.log(cards[cardId].cardImage);
-	console.log(cards[cardId].suit);
-}
+};
 
 
 //flipCard(0);
